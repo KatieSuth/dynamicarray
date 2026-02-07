@@ -31,13 +31,13 @@ class DynamicArray {
             values = newValues;
         }
 
-        void testAddResize() {
+        void test_add_resize() {
             if (capacity == cursize) {
                 resize(true);
             }
         }
 
-        void testRemoveResize() {
+        void test_remove_resize() {
             //resize if we're at less than a quarter capacity
             float ratio = float(cursize) / capacity;
             if (ratio < 0.25) {
@@ -63,7 +63,7 @@ class DynamicArray {
         }
 
         void append(int x) {
-            testAddResize();
+            test_add_resize();
             values[cursize] = x;
             cursize++;
         }
@@ -100,7 +100,7 @@ class DynamicArray {
             set(index, 0);
             cursize--;
 
-            testRemoveResize();
+            test_remove_resize();
 
             return returnValue;
         }
@@ -122,7 +122,7 @@ class DynamicArray {
                 values[cursize - 1] = 0;
             }
             cursize--;
-            testRemoveResize();
+            test_remove_resize();
             return value;
         }
 
@@ -142,7 +142,7 @@ class DynamicArray {
             }
 
             //we're adding a value so check if it will put us over capacity
-            testAddResize();
+            test_add_resize();
             cursize++;
 
             for (int j = cursize; j > i; j--) {
@@ -169,12 +169,12 @@ class DynamicArray {
             }
 
             cursize--;
-            testRemoveResize();
+            test_remove_resize();
 
             return i;
         }
 
-        void printArray() {
+        void print_array() {
             cout << "[";
             for (int i = 0; i < cursize; i++) {
                 cout << values[i];
@@ -204,7 +204,7 @@ int main() {
     arr1.append(9);
     arr1.append(10);
 
-    arr1.printArray();
+    arr1.print_array();
     cout << endl;
 
     val = arr1.get(0);
@@ -219,7 +219,7 @@ int main() {
 	cout << "Set '15' at index 2..." << endl;
     arr1.set(2, 15);
 
-    arr1.printArray();
+    arr1.print_array();
     cout << endl;
     val = arr1.get(2);
 	cout << "Get after set (expected 15): " << val << endl << endl;
@@ -237,7 +237,7 @@ int main() {
     test = arr1.contains(10);
 	cout << "Contains 10 (expected false): " << test << endl << endl;
 
-    arr1.printArray();
+    arr1.print_array();
     cout << endl;
 
     val = arr1.pop(6);
@@ -246,7 +246,7 @@ int main() {
 	cout << "Size after pop (expected 8): " << val << endl;
     val = arr1.get_capacity();
 	cout << "Capacity after pop: " << val << endl << endl;
-    arr1.printArray();
+    arr1.print_array();
     cout << endl;
 
 	cout << "Insert '20' at index 4..." << endl;
@@ -256,7 +256,7 @@ int main() {
 	cout << "Size after insert (expected 9): " << val << endl;
     val = arr1.get_capacity();
 	cout << "Capacity after insert: " << val << endl << endl;
-    arr1.printArray();
+    arr1.print_array();
     cout << endl;
 
 	cout << "Append '20'..." << endl;
@@ -268,7 +268,7 @@ int main() {
 	cout << "Size after append & remove (expected 9): " << val << endl;
     val = arr1.get_capacity();
 	cout << "Capacity after remove: " << val << endl << endl;
-    arr1.printArray();
+    arr1.print_array();
     cout << endl;
 
     val = arr1.remove(12345);
@@ -277,7 +277,7 @@ int main() {
 	cout << "Size after append & remove (expected 9): " << val << endl;
     val = arr1.get_capacity();
 	cout << "Capacity after append & remove: " << val << endl << endl;
-    arr1.printArray();
+    arr1.print_array();
     cout << endl;
 
 	cout << "Remove values to check capacity reduction on remove..." << endl;
@@ -291,7 +291,7 @@ int main() {
 	cout << "Size after 6 removes (expected 3): " << val << endl;
     val = arr1.get_capacity();
 	cout << "Capacity after 6 removes: " << val << endl << endl;
-    arr1.printArray();
+    arr1.print_array();
     cout << endl;
 
     try {
@@ -352,7 +352,7 @@ int main() {
 	cout << "Size after exception checks: " << val << endl;
     val = arr1.get_capacity();
 	cout << "Capacity after exception checks: " << val << endl << endl;
-    arr1.printArray();
+    arr1.print_array();
     cout << endl;
 
 	cout << "Initializing new array for pop_back empty check..." << endl << endl;
